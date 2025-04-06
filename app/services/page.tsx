@@ -47,13 +47,13 @@ const services = [
       "Our professional painting services provide high-quality finishes for interior and exterior surfaces, enhancing the appearance and protection of your property.",
     image: "/images/painting-service.jpeg",
   },
-  {
-    id: "waterproofing",
-    title: "Waterproofing Systems",
-    description:
-      "Our waterproofing solutions ensure long-lasting protection against water damage for roofs, basements, bathrooms, and other vulnerable areas.",
-    image: "/images/waterproofing.jpeg",
-  },
+  // {
+  //   id: "waterproofing",
+  //   title: "Waterproofing Systems",
+  //   description:
+  //     "Our waterproofing solutions ensure long-lasting protection against water damage for roofs, basements, bathrooms, and other vulnerable areas.",
+  //   image: "/images/waterproofing.jpeg",
+  // },
   {
     id: "flooring",
     title: "Flooring Solutions",
