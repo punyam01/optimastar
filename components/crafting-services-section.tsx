@@ -19,7 +19,7 @@ const CraftingServicesSection = () => {
           >
             <div className="rounded-lg overflow-hidden shadow-xl h-full">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled%20design%20%283%29.png-SmRPnHVHtrCWOw832ky2iC9CPS9mOA.jpeg"
+                src="/images/Untitled design (5).png"
                 alt="OPTIMA STAR Technical Services"
                 width={800}
                 height={800}
