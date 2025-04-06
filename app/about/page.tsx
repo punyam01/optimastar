@@ -133,35 +133,35 @@ export default function AboutPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Painting and waterproofing systems</span>
+                    <span>Insulation Contracting</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Flooring solutions</span>
+                    <span>Tiling Works</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Air-conditioning, ventilation, and air filtration system installation & maintenance</span>
+                    <span>Interior Services</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Electromechanical equipment installation & maintenance</span>
+                    <span>Painting Services</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Plumbing & sanitary installation</span>
+                    <span>Flooring Solutions</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Floor & wall tiling works</span>
+                    <span>HVAC Systems</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>False ceiling & light partition installation</span>
+                    <span>Electromechanical Services</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Insulation contracting</span>
+                    <span>Plumbing & Sanitary Installation</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
@@ -169,15 +169,19 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Electrical fittings & fixture repair & maintenance</span>
+                    <span>False Ceiling & Partition Installation</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Plaster works</span>
+                    <span>Electrical Fitting & Fixtures</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Swimming pool installation</span>
+                    <span>Plaster Works</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Swimming Pool Installation</span>
                   </div>
                 </div>
 
