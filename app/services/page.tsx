@@ -17,7 +17,7 @@ const services = [
     description:
       "Our insulation services help improve energy efficiency and comfort in buildings through high-quality materials and expert installation techniques.",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/insulation%20contracting.jpg-QxqA9rclvRvUKRzsDYzPaLkl5Fk9lN.jpeg",
+      "/images/waterproofing.jpeg",
     subServices: [
       { id: "combo", name: "Combo" },
       { id: "grp", name: "GRP" },
