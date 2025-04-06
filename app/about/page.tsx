@@ -63,7 +63,7 @@ export default function AboutPage() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            {/* About Us */}
+            About Us
           </motion.h1>
           <motion.div
             className="h-2"
@@ -131,9 +131,56 @@ export default function AboutPage() {
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Insulation Contracting</span>
+                  <div className="flex flex-col">
+                    <div className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                      <div className="w-full">
+                        <button
+                          className="font-medium text-left flex items-center justify-between w-full"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            const dropdown = e.currentTarget.nextElementSibling
+                            if (dropdown) {
+                              dropdown.classList.toggle("hidden")
+                            }
+                          }}
+                        >
+                          <span>Insulation Contracting</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="ml-1"
+                          >
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
+                        </button>
+                        <ul className="ml-0 mt-1 space-y-1 pl-5 hidden">
+                          <li className="flex items-center">
+                            <span className="w-1.5 h-1.5 bg-[#00aee7] rounded-full mr-2"></span>
+                            <span className="text-sm">Combo</span>
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-1.5 h-1.5 bg-[#00aee7] rounded-full mr-2"></span>
+                            <span className="text-sm">GRP</span>
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-1.5 h-1.5 bg-[#00aee7] rounded-full mr-2"></span>
+                            <span className="text-sm">Waterproofing</span>
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-1.5 h-1.5 bg-[#00aee7] rounded-full mr-2"></span>
+                            <span className="text-sm">Injection</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
@@ -141,11 +188,11 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Interior Services</span>
+                    <span>Painting Services</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Painting Services</span>
+                    <span>Interior Services</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
@@ -153,11 +200,15 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>HVAC Systems</span>
+                    <span>Electromechanical Services</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Electromechanical Services</span>
+                    <span>Wallpaper Fixing</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Electrical Fitting & Fixtures</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
@@ -165,15 +216,7 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Wallpaper fixing</span>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
                     <span>False Ceiling & Partition Installation</span>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                    <span>Electrical Fitting & Fixtures</span>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
