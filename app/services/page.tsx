@@ -47,13 +47,13 @@ const services = [
       "Our professional painting services provide high-quality finishes for interior and exterior surfaces, enhancing the appearance and protection of your property.",
     image: "/images/painting-service.jpeg",
   },
-  // {
-  //   id: "waterproofing",
-  //   title: "Waterproofing Systems",
-  //   description:
-  //     "Our waterproofing solutions ensure long-lasting protection against water damage for roofs, basements, bathrooms, and other vulnerable areas.",
-  //   image: "/images/waterproofing.jpeg",
-  // },
+  {
+    id: "waterproofing",
+    title: "Waterproofing Systems",
+    description:
+      "Our waterproofing solutions ensure long-lasting protection against water damage for roofs, basements, bathrooms, and other vulnerable areas.",
+    image: "/images/waterproofing.jpeg",
+  },
   {
     id: "flooring",
     title: "Flooring Solutions",
@@ -199,7 +199,7 @@ export default function ServicesPage() {
       className="perspective-1000"
     >
       {/* Hero Section */}
-      {/* <motion.section
+      <motion.section
         className="relative h-[200px] md:h-[250px]"
         initial={{ rotateX: 10 }}
         animate={{ rotateX: 0 }}
@@ -228,7 +228,7 @@ export default function ServicesPage() {
             transition={{ delay: 0.4, duration: 0.5 }}
           ></motion.div>
         </div>
-      </motion.section> */}
+      </motion.section>
 
       {/* Services Content */}
       <motion.section className="py-20" variants={containerVariants} initial="hidden" animate="visible">
@@ -256,7 +256,7 @@ export default function ServicesPage() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full"
               >
                 <div className="relative h-48 overflow-hidden">
                   <div
@@ -269,7 +269,7 @@ export default function ServicesPage() {
                   <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
                 </div>
 
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-bold text-[#132d4c] mb-3">{service.title}</h3>
                   <p className="text-gray-700 mb-6">{service.description}</p>
 
@@ -295,18 +295,20 @@ export default function ServicesPage() {
                     </div>
                   )}
 
-                  <motion.div
-                    className="flex justify-center"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
-                    <Button
-                      className="bg-[#00aee7] hover:bg-[#132d4c] text-white"
-                      onClick={() => handleBookService(service.id)}
+                  <div className="mt-auto pt-4">
+                    <motion.div
+                      className="flex justify-center"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                      Book Service
-                    </Button>
-                  </motion.div>
+                      <Button
+                        className="bg-[#00aee7] hover:bg-[#132d4c] text-white"
+                        onClick={() => handleBookService(service.id)}
+                      >
+                        Book Service
+                      </Button>
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
             ))}
