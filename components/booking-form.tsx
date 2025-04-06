@@ -28,17 +28,17 @@ import { Checkbox } from "@/components/ui/checkbox"
 // Updated services list with reordered services
 const services = [
   { id: "insulation", name: "Insulation contracting" },
-  { id: "tiling", name: "Floor & wall tiling works" },
+  { id: "tiling", name: "Tiling works" },
   { id: "interior", name: "Interior Services" },
   { id: "painting", name: "Painting Services" },
   // { id: "waterproofing", name: "Waterproofing systems" },
   { id: "flooring", name: "Flooring solutions" },
-  { id: "hvac", name: "Air-conditioning, ventilation, and air filtration system installation & maintenance" },
-  { id: "electromechanical", name: "Electromechanical equipment installation & maintenance" },
+  { id: "hvac", name: "HVAC Systems" },
+  { id: "electromechanical", name: "Electromechanical Services" },
   { id: "plumbing", name: "Plumbing & sanitary installation" },
   { id: "wallpaper", name: "Wallpaper fixing" },
-  { id: "false-ceiling", name: "False ceiling & light partition installation" },
-  { id: "electrical", name: "Electrical fittings & fixture repair & maintenance" },
+  { id: "false-ceiling", name: "False ceiling & partition installation" },
+  { id: "electrical", name: "Electrical fittings & fixtures" },
   { id: "plaster", name: "Plaster works" },
   { id: "swimming-pool", name: "Swimming pool installation" },
 ]
