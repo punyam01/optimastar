@@ -199,7 +199,7 @@ export default function ServicesPage() {
       className="perspective-1000"
     >
       {/* Hero Section */}
-      <motion.section
+{/*       <motion.section
         className="relative h-[200px] md:h-[250px]"
         initial={{ rotateX: 10 }}
         animate={{ rotateX: 0 }}
@@ -228,7 +228,7 @@ export default function ServicesPage() {
             transition={{ delay: 0.4, duration: 0.5 }}
           ></motion.div>
         </div>
-      </motion.section>
+      </motion.section> */}
 
       {/* Services Content */}
       <motion.section className="py-20" variants={containerVariants} initial="hidden" animate="visible">
