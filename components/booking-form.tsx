@@ -31,7 +31,7 @@ const services = [
   { id: "tiling", name: "Floor & wall tiling works" },
   { id: "interior", name: "Interior Services" },
   { id: "painting", name: "Painting Services" },
-  { id: "waterproofing", name: "Waterproofing systems" },
+  // { id: "waterproofing", name: "Waterproofing systems" },
   { id: "flooring", name: "Flooring solutions" },
   { id: "hvac", name: "Air-conditioning, ventilation, and air filtration system installation & maintenance" },
   { id: "electromechanical", name: "Electromechanical equipment installation & maintenance" },
