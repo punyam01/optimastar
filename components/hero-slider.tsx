@@ -6,11 +6,14 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 const backgroundImages = [
-  "/images/carousel1.jpeg",
+  // "/images/carousel1.jpeg",
   "/images/carousel2.png",
   "/images/carousel3.jpeg",
   "/images/carousel4.jpeg",
-  "/images/carousel5.jpeg",
+  "/images/carousel22.jpeg",
+  "/images/carousel23.jpeg",
+  "/images/carousel24.jpeg",
+  // "/images/carousel5.jpeg",
   "/images/carousel17.jpeg",
   "/images/carousel18.jpeg",
   "/images/carousel19.jpeg",
