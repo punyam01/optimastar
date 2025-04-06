@@ -92,7 +92,7 @@ export default function AboutPage() {
             >
               <div className="rounded-lg overflow-hidden shadow-xl h-full">
                 <Image
-                  src="/images/Untitled design (5).png"
+                  src="/images/Untitled design (6).png"
                   alt="OPTIMA STAR Technical Services"
                   width={800}
                   height={800}
