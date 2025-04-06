@@ -35,88 +35,82 @@ const CraftingServicesSection = () => {
             viewport={{ once: true }}
           >
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg border-l-4 border-[#00aee7] h-full flex flex-col justify-center">
-              <div className="flex items-center mb-4">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#132d4c] mr-3">OPTIMA STAR TECHNICAL SERVICES</h2>
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/services%20icon-KjjlUsL4SyJKmQfeD1d1Nc5BlJUNmO.png"
-                  alt="Services"
-                  width={40}
-                  height={40}
-                  className="w-10 h-10"
-                />
-              </div>
-              <div className="w-16 sm:w-20 h-1 bg-[#00aee7] mb-5 sm:mb-6"></div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#132d4c] mb-6">OPTIMA STAR TECHNICAL SERVICES</h2>
+                <div className="w-16 sm:w-20 h-1 bg-[#00aee7] mb-5 sm:mb-6"></div>
 
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                OPTIMA STAR TECHNICAL SERVICES L.L.C. is a professionally managed company catering to the growing demand
-                in the U.A.E. market for reliable services and consultancy in building insulation. The ongoing
-                construction boom and continuous expansion of various entities have fueled the growth of both the
-                industry and our company.
-              </p>
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  OPTIMA STAR TECHNICAL SERVICES L.L.C. is a professionally managed company catering to the growing
+                  demand in the U.A.E. market for reliable services and consultancy in building insulation. The ongoing
+                  construction boom and continuous expansion of various entities have fueled the growth of both the
+                  industry and our company.
+                </p>
 
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                At OPTIMA STAR TECHNICAL SERVICES L.L.C., we adhere to stringent quality control systems and safety
-                policies. Our vision for growth is centered on delivering superior quality, innovation, and integrity.
-                Within this framework, we assure all our clients sustainable, environmentally friendly, and integrated
-                solutions, driven by our commitment to excellence and continuous development.
-              </p>
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  At OPTIMA STAR TECHNICAL SERVICES L.L.C., we adhere to stringent quality control systems and safety
+                  policies. Our vision for growth is centered on delivering superior quality, innovation, and integrity.
+                  Within this framework, we assure all our clients sustainable, environmentally friendly, and integrated
+                  solutions, driven by our commitment to excellence and continuous development.
+                </p>
 
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                As a full-service professional engineering firm, OPTIMA STAR TECHNICAL SERVICES L.L.C. serves the
-                construction industry with expertise in:
-              </p>
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  As a full-service professional engineering firm, OPTIMA STAR TECHNICAL SERVICES L.L.C. serves the
+                  construction industry with expertise in:
+                </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Painting and waterproofing systems</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Insulation Contracting</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Tiling Works</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Interior Services</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Painting Services</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Flooring Solutions</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>HVAC Systems</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Electromechanical Services</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Plumbing & Sanitary Installation</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Wallpaper fixing</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>False Ceiling & Partition Installation</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Electrical Fitting & Fixtures</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Plaster Works</span>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <span>Swimming Pool Installation</span>
+                  </div>
                 </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Flooring solutions</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Air-conditioning, ventilation, and air filtration system installation & maintenance</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Electromechanical equipment installation & maintenance</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Plumbing & sanitary installation</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Floor & wall tiling works</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>False ceiling & light partition installation</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Insulation contracting</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Wallpaper fixing</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Electrical fittings & fixture repair & maintenance</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Plaster works</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
-                  <span>Swimming pool installation</span>
-                </div>
-              </div>
-
               <div className="mt-auto">
                 <Button
                   size="lg"
