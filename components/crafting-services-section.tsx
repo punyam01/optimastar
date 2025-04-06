@@ -19,7 +19,7 @@ const CraftingServicesSection = () => {
           >
             <div className="rounded-lg overflow-hidden shadow-xl h-full">
               <Image
-                src="/images/Untitled design (6).png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled%20design%20%283%29.png-SmRPnHVHtrCWOw832ky2iC9CPS9mOA.jpeg"
                 alt="OPTIMA STAR Technical Services"
                 width={800}
                 height={800}
@@ -35,12 +35,21 @@ const CraftingServicesSection = () => {
             viewport={{ once: true }}
           >
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg border-l-4 border-[#00aee7] h-full flex flex-col justify-center">
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#132d4c] mb-6">OPTIMA STAR TECHNICAL SERVICES</h2>
+              <div className="flex items-center mb-4">
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#132d4c] mr-3">OPTIMA STAR TECHNICAL SERVICES</h2>
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/services%20icon-KjjlUsL4SyJKmQfeD1d1Nc5BlJUNmO.png"
+                  alt="Services"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10"
+                />
+              </div>
               <div className="w-16 sm:w-20 h-1 bg-[#00aee7] mb-5 sm:mb-6"></div>
 
               <p className="text-gray-700 mb-6 leading-relaxed">
-                OPTIMA STAR TECHNICAL SERVICES L.L.C. is a professionally managed company catering to the growing
-                demand in the U.A.E. market for reliable services and consultancy in building insulation. The ongoing
+                OPTIMA STAR TECHNICAL SERVICES L.L.C. is a professionally managed company catering to the growing demand
+                in the U.A.E. market for reliable services and consultancy in building insulation. The ongoing
                 construction boom and continuous expansion of various entities have fueled the growth of both the
                 industry and our company.
               </p>
@@ -58,74 +67,99 @@ const CraftingServicesSection = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-                {/* Insulation Contracting with subpoints */}
-                <div className="flex flex-col items-start">
+                <div className="flex flex-col">
                   <div className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
-                    <span>Insulation Contracting</span>
-                  </div>
-                  <div className="ml-7 mt-2 space-y-1 text-sm text-gray-700">
-                    <div className="flex items-start">
-                      <span className="mr-2">•</span> <span>Combo</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="mr-2">•</span> <span>GRP</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="mr-2">•</span> <span>Waterproofing</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="mr-2">•</span> <span>Injection</span>
+                    <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                    <div className="w-full">
+                      <button
+                        className="font-medium text-left flex items-center justify-between w-full"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          const dropdown = e.currentTarget.nextElementSibling
+                          if (dropdown) {
+                            dropdown.classList.toggle("hidden")
+                          }
+                        }}
+                      >
+                        <span>Insulation Contracting</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="ml-1"
+                        >
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                      </button>
+                      <ul className="ml-0 mt-1 space-y-1 pl-5 hidden">
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-[#00aee7] rounded-full mr-2"></span>
+                          <span className="text-sm">Combo</span>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-[#00aee7] rounded-full mr-2"></span>
+                          <span className="text-sm">GRP</span>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-[#00aee7] rounded-full mr-2"></span>
+                          <span className="text-sm">Waterproofing</span>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-[#00aee7] rounded-full mr-2"></span>
+                          <span className="text-sm">Injection</span>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-
                 <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
                   <span>Tiling Works</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
-                  <span>Interior Services</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
                   <span>Painting Services</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                  <span>Interior Services</span>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
                   <span>Flooring Solutions</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
-                  <span>HVAC Systems</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
                   <span>Electromechanical Services</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
-                  <span>Plumbing & Sanitary Installation</span>
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                  <span>Wallpaper Fixing</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
-                  <span>Wallpaper fixing</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
-                  <span>False Ceiling & Partition Installation</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
                   <span>Electrical Fitting & Fixtures</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                  <span>Plumbing & Sanitary Installation</span>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
+                  <span>False Ceiling & Partition Installation</span>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
                   <span>Plaster Works</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 mt-1" />
+                  <CheckCircle className="h-5 w-5 text-[#00aee7] mr-2 flex-shrink-0 mt-1" />
                   <span>Swimming Pool Installation</span>
                 </div>
               </div>
@@ -184,3 +218,4 @@ const CraftingServicesSection = () => {
 }
 
 export default CraftingServicesSection
+
