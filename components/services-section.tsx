@@ -12,7 +12,7 @@ const homeServices = [
     description:
       "Our insulation services help improve energy efficiency and comfort in buildings through high-quality materials.",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/insulation%20contracting.jpg-QxqA9rclvRvUKRzsDYzPaLkl5Fk9lN.jpeg",
+      "/images/waterproofing.jpeg",
   },
   {
     id: "tiling",
