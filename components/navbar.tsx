@@ -18,11 +18,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
+      setIsScrolled(window.scrollY > 10)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -31,7 +27,6 @@ const Navbar = () => {
     }
   }, [])
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false)
   }, [pathname])
@@ -72,6 +67,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Navbar */}
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled ? "bg-white shadow-md py-0" : "bg-white/95 backdrop-blur-sm py-0.5"
@@ -90,44 +86,11 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            <Link
-              href="/"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/about"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              About Us
-            </Link>
-            <Link
-              href="/services"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/services"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Services
-            </Link>
-            <Link
-              href="/contact"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/contact"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Contact
-            </Link>
+            <Link href="/" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Home</Link>
+            <Link href="/about" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/about" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>About Us</Link>
+            <Link href="/services" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/services" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Services</Link>
+            <Link href="/certificate" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/certificate" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Certificate</Link>
+            <Link href="/contact" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/contact" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Contact</Link>
             <div className="hidden lg:block">
               <BookingForm />
             </div>
@@ -148,30 +111,11 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white py-4 px-4 shadow-lg">
             <nav className="flex flex-col space-y-4">
-              <Link
-                href="/"
-                className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                About Us
-              </Link>
-              <Link
-                href="/services"
-                className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Services
-              </Link>
-              <Link
-                href="/contact"
-                className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Contact
-              </Link>
+              <Link href="/" className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Home</Link>
+              <Link href="/about" className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>About Us</Link>
+              <Link href="/services" className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Services</Link>
+              <Link href="/certificate" className={`text-lg font-medium py-2 ${pathname === "/certificate" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Certificate</Link>
+              <Link href="/contact" className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Contact</Link>
             </nav>
           </div>
         )}
@@ -181,4 +125,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
