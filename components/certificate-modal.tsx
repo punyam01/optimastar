@@ -20,20 +20,21 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center px-4">
-      <div className="relative bg-white rounded-lg max-w-3xl w-full shadow-lg overflow-hidden">
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-2xl font-bold z-10"
-        >
-          ×
-        </button>
+    <div className="fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center">
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-white text-4xl font-bold z-50 hover:text-red-400"
+        aria-label="Close modal"
+      >
+        ×
+      </button>
+      <div className="max-w-6xl w-full px-4">
         <Image
-          src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png" // Make sure this file exists in /public
+          src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png"
           alt="Certificate"
-          width={800}
-          height={600}
-          className="rounded-lg w-full h-auto object-contain"
+          width={1600}
+          height={1200}
+          className="w-full h-auto max-h-[90vh] object-contain rounded-lg shadow-lg"
         />
       </div>
     </div>
