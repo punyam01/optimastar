@@ -35,7 +35,7 @@ const Navbar = () => {
     <>
       <CertificateModal isOpen={showCertificate} onClose={() => setShowCertificate(false)} />
 
-      {/* Top Contact Banner */}
+      {/* Top Banner */}
       <div className="bg-[#132d4c] text-white py-2 z-50 relative">
         <div className="container mx-auto px-4 flex flex-wrap justify-between items-center">
           <div className="flex items-center space-x-4 mb-2 sm:mb-0">
@@ -69,9 +69,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* Navbar */}
       <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled ? "bg-white shadow-md py-0" : "bg-white/95 backdrop-blur-sm py-0.5"
         }`}
       >
@@ -98,12 +98,12 @@ const Navbar = () => {
               Certificate
             </button>
             <NavLink href="/contact" label="Contact" active={pathname === "/contact"} />
-            <div className="hidden lg:block">
+            <div className="block">
               <BookingForm />
             </div>
           </nav>
 
-          {/* Mobile Menu Toggle + Booking Form */}
+          {/* Mobile Menu + Booking Button */}
           <div className="flex items-center md:hidden">
             <div className="mr-2">
               <BookingForm />
