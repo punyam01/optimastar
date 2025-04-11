@@ -30,7 +30,7 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
           ×
         </button>
         <Image
-          src="/certificate.jpg"
+          src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png"
           alt="Certificate"
           width={1600}
           height={1200}
