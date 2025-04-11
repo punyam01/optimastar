@@ -6,34 +6,37 @@ import Image from "next/image"
 import { Menu, X, Phone, Mail } from "lucide-react"
 import { usePathname } from "next/navigation"
 import BookingForm from "./booking-form"
-import CertificateModal from "./certificate-modal" // 🔧 Import modal
+import CertificateModal from "./certificate-modal"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [showCertificateModal, setShowCertificateModal] = useState(false) // 🔧 Modal state
+  const [showCertificate, setShowCertificate] = useState(false)
   const pathname = usePathname()
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false)
   }, [pathname])
 
+  const handleCertificateClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setShowCertificate(true)
+  }
+
   return (
     <>
-      {/* Contact Banner */}
-      <div className="bg-[#132d4c] text-white py-2">
+      <CertificateModal isOpen={showCertificate} onClose={() => setShowCertificate(false)} />
+
+      {/* Top Contact Banner */}
+      <div className="bg-[#132d4c] text-white py-2 z-50 relative">
         <div className="container mx-auto px-4 flex flex-wrap justify-between items-center">
           <div className="flex items-center space-x-4 mb-2 sm:mb-0">
             <a href="tel:+971568180793" className="flex items-center text-sm hover:text-[#00aee7] transition-colors">
@@ -66,6 +69,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Main Navbar */}
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled ? "bg-white shadow-md py-0" : "bg-white/95 backdrop-blur-sm py-0.5"
@@ -84,57 +88,22 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            <Link
-              href="/"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/about"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              About Us
-            </Link>
-            <Link
-              href="/services"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/services"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Services
-            </Link>
-            {/* 🔧 Updated Certificate Link (button) */}
+            <NavLink href="/" label="Home" active={pathname === "/"} />
+            <NavLink href="/about" label="About Us" active={pathname === "/about"} />
+            <NavLink href="/services" label="Services" active={pathname === "/services"} />
             <button
-              onClick={() => setShowCertificateModal(true)}
+              onClick={handleCertificateClick}
               className="text-base lg:text-lg font-medium text-[#132d4c] hover:text-[#00aee7] transition-colors"
             >
               Certificate
             </button>
-            <Link
-              href="/contact"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/contact"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Contact
-            </Link>
+            <NavLink href="/contact" label="Contact" active={pathname === "/contact"} />
             <div className="hidden lg:block">
               <BookingForm />
             </div>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle + Booking Form */}
           <div className="flex items-center md:hidden">
             <div className="mr-2">
               <BookingForm />
@@ -149,45 +118,44 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white py-4 px-4 shadow-lg">
             <nav className="flex flex-col space-y-4">
-              <Link
-                href="/"
-                className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                About Us
-              </Link>
-              <Link
-                href="/services"
-                className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Services
-              </Link>
-              {/* 🔧 Updated Certificate Link (button) */}
+              <NavLink href="/" label="Home" active={pathname === "/"} mobile />
+              <NavLink href="/about" label="About Us" active={pathname === "/about"} mobile />
+              <NavLink href="/services" label="Services" active={pathname === "/services"} mobile />
               <button
-                onClick={() => setShowCertificateModal(true)}
-                className="text-lg font-medium py-2 text-[#132d4c] hover:text-[#00aee7]"
+                onClick={handleCertificateClick}
+                className="text-lg font-medium py-2 text-[#132d4c] hover:text-[#00aee7] text-left"
               >
                 Certificate
               </button>
-              <Link
-                href="/contact"
-                className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Contact
-              </Link>
+              <NavLink href="/contact" label="Contact" active={pathname === "/contact"} mobile />
+              <BookingForm />
             </nav>
           </div>
         )}
       </header>
-
-      {/* 🔧 Certificate Modal */}
-      <CertificateModal isOpen={showCertificateModal} onClose={() => setShowCertificateModal(false)} />
     </>
+  )
+}
+
+const NavLink = ({
+  href,
+  label,
+  active,
+  mobile = false,
+}: {
+  href: string
+  label: string
+  active: boolean
+  mobile?: boolean
+}) => {
+  const classes = mobile
+    ? `text-lg font-medium py-2 ${active ? "text-[#00aee7]" : "text-[#132d4c]"}`
+    : `text-base lg:text-lg font-medium transition-colors ${
+        active ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`
+  return (
+    <Link href={href} className={classes}>
+      {label}
+    </Link>
   )
 }
 
