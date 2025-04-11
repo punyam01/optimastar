@@ -13,10 +13,11 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
     }
+
     document.addEventListener("keydown", handleEsc)
 
     if (isOpen) {
-      document.body.style.overflow = "hidden" // Lock scroll
+      document.body.style.overflow = "hidden" // Lock background scroll
     } else {
       document.body.style.overflow = ""
     }
@@ -30,15 +31,18 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-40 bg-black bg-opacity-80 flex items-start justify-center pt-[100px] px-4 overflow-auto">
-      <div className="relative max-w-5xl w-full">
+    <div className="fixed inset-0 z-40 bg-black bg-opacity-80 flex justify-center px-4 overflow-auto pt-28 sm:pt-32">
+      <div className="relative w-full max-w-5xl">
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute -top-10 right-0 text-white text-4xl font-bold z-50 hover:text-red-400"
+          className="absolute -top-10 right-0 sm:-top-12 text-white text-3xl sm:text-4xl font-bold z-50 hover:text-red-400"
           aria-label="Close modal"
         >
-          &times;
+          ×
         </button>
+
+        {/* Certificate Image */}
         <Image
           src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png"
           alt="Certificate"
