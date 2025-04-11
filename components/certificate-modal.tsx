@@ -10,34 +10,34 @@ interface CertificateModalProps {
 
 const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
   useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose()
+    }
+    document.addEventListener("keydown", handleEsc)
+
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden" // Lock scroll
     } else {
       document.body.style.overflow = ""
     }
 
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose()
-    }
-
-    window.addEventListener("keydown", handleEsc)
     return () => {
+      document.removeEventListener("keydown", handleEsc)
       document.body.style.overflow = ""
-      window.removeEventListener("keydown", handleEsc)
     }
   }, [isOpen, onClose])
 
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-40 bg-black bg-opacity-90 flex items-start justify-center pt-[100px] p-4 overflow-auto">
-      <div className="relative w-full max-w-5xl">
+    <div className="fixed inset-0 z-40 bg-black bg-opacity-80 flex items-start justify-center pt-[100px] px-4 overflow-auto">
+      <div className="relative max-w-5xl w-full">
         <button
           onClick={onClose}
-          className="absolute top-0 right-0 text-white text-4xl font-bold z-50 hover:text-red-400"
+          className="absolute -top-10 right-0 text-white text-4xl font-bold z-50 hover:text-red-400"
           aria-label="Close modal"
         >
-          ×
+          &times;
         </button>
         <Image
           src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png"
