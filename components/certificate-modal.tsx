@@ -13,15 +13,25 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
     }
-    document.addEventListener("keydown", handleEsc)
-    return () => document.removeEventListener("keydown", handleEsc)
-  }, [onClose])
+
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+
+    window.addEventListener("keydown", handleEsc)
+    return () => {
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", handleEsc)
+    }
+  }, [isOpen, onClose])
 
   if (!isOpen) return null
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
+      className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-90"
       onClick={onClose}
     >
       <button
@@ -33,7 +43,7 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
       </button>
       <div
         className="max-w-full max-h-full p-4"
-        onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking image
+        onClick={(e) => e.stopPropagation()}
       >
         <Image
           src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png"
