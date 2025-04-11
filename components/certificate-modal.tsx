@@ -13,42 +13,28 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
     }
-
     document.addEventListener("keydown", handleEsc)
-
-    if (isOpen) {
-      document.body.style.overflow = "hidden" // Lock background scroll
-    } else {
-      document.body.style.overflow = ""
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEsc)
-      document.body.style.overflow = ""
-    }
-  }, [isOpen, onClose])
+    return () => document.removeEventListener("keydown", handleEsc)
+  }, [onClose])
 
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-40 bg-black bg-opacity-80 flex justify-center px-4 overflow-auto pt-28 sm:pt-32">
+    <div className="fixed inset-0 z-40 bg-black bg-opacity-80 flex items-start justify-center overflow-auto pt-[100px] px-4">
       <div className="relative w-full max-w-5xl">
-        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute -top-10 right-0 sm:-top-12 text-white text-3xl sm:text-4xl font-bold z-50 hover:text-red-400"
+          className="absolute -top-10 right-0 text-white text-4xl font-bold z-50 hover:text-red-400"
           aria-label="Close modal"
         >
           ×
         </button>
-
-        {/* Certificate Image */}
         <Image
           src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png"
           alt="Certificate"
           width={1600}
           height={1200}
-          className="w-full h-auto max-h-[80vh] object-contain rounded-lg shadow-lg"
+          className="w-full h-auto object-contain rounded-lg shadow-xl max-h-[80vh] mx-auto"
         />
       </div>
     </div>
