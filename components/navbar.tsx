@@ -1,40 +1,46 @@
-"use client"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu, X, Phone, Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
+import BookingForm from "./booking-form";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Menu, X, Phone, Mail } from "lucide-react"
-import { usePathname } from "next/navigation"
-import BookingForm from "./booking-form"
+// Import the certificate image
+import certificateImage from "/images/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const pathname = usePathname();
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Close mobile menu when route changes
   useEffect(() => {
-    setIsMenuOpen(false)
-  }, [pathname])
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -90,64 +96,26 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            <Link
-              href="/"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
+            <Link href="/" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>
               Home
             </Link>
-            <Link
-              href="/about"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/about"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
+            <Link href="/about" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/about" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>
               About Us
             </Link>
-            <Link
-              href="/services"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/services"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
+            <Link href="/services" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/services" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>
               Services
             </Link>
-            <Link
-              href="/certificate"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/certificate"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
+            {/* Update Certificate Link */}
+            <button onClick={toggleModal} className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/certificate" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>
               Certificate
-            </Link>
-            <Link
-              href="/contact"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/contact"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
+            </button>
+            <Link href="/contact" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/contact" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>
               Contact
             </Link>
-            <div className="hidden lg:block">
-              <BookingForm />
-            </div>
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
-            <div className="mr-2">
-              <BookingForm />
-            </div>
             <button className="text-[#132d4c] p-2" onClick={toggleMenu} aria-label="Toggle menu">
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -158,42 +126,30 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white py-4 px-4 shadow-lg">
             <nav className="flex flex-col space-y-4">
-              <Link
-                href="/"
-                className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                About Us
-              </Link>
-              <Link
-                href="/services"
-                className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Services
-              </Link>
-              <Link
-                href="/certificate"
-                className={`text-lg font-medium py-2 ${pathname === "/certificate" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
+              {/* Update Certificate Link */}
+              <button onClick={toggleModal} className={`text-lg font-medium py-2 ${pathname === "/certificate" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>
                 Certificate
-              </Link>
-              <Link
-                href="/contact"
-                className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Contact
-              </Link>
+              </button>
             </nav>
           </div>
         )}
       </header>
-    </>
-  )
-}
 
-export default Navbar
+      {/* Modal Popup */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[1000]">
+          <div className="relative bg-white p-6 rounded-md shadow-lg max-w-md">
+            {/* Close Button */}
+            <button onClick={toggleModal} className="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
+              ✖
+            </button>
+            {/* Certificate Image */}
+            <Image src={certificateImage} alt="Certificate" width={500} height={700} />
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Navbar;
