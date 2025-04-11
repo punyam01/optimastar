@@ -30,10 +30,10 @@ const CertificateModal = ({ isOpen, onClose }: Props) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-40 bg-black bg-opacity-90 flex justify-center items-center p-4">
-      <div className="relative w-full h-full flex justify-center items-center">
+    <div className="fixed inset-0 z-40 bg-black bg-opacity-90 flex items-start pt-[100px] justify-center p-4 overflow-auto">
+      <div className="relative w-full max-w-4xl">
         <button
-          className="absolute top-4 right-4 text-white text-4xl z-50"
+          className="absolute top-0 right-0 text-white text-4xl font-bold p-2 z-50"
           onClick={onClose}
           aria-label="Close modal"
         >
@@ -44,7 +44,7 @@ const CertificateModal = ({ isOpen, onClose }: Props) => {
           alt="Certificate"
           width={1600}
           height={1200}
-          className="max-w-full max-h-full rounded-lg"
+          className="w-full h-auto rounded-md shadow-lg"
         />
       </div>
     </div>
