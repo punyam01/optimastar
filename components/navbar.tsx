@@ -11,18 +11,17 @@ import CertificateModal from "./certificate-modal"
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [showCertificateModal, setShowCertificateModal] = useState(false)
+  const [isCertificateModalOpen, setCertificateModalOpen] = useState(false)
   const pathname = usePathname()
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+  const openModal = () => setCertificateModalOpen(true)
+  const closeModal = () => setCertificateModalOpen(false)
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
-
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -33,8 +32,6 @@ const Navbar = () => {
 
   return (
     <>
-      <CertificateModal isOpen={showCertificateModal} onClose={() => setShowCertificateModal(false)} />
-
       {/* Contact Banner */}
       <div className="bg-[#132d4c] text-white py-2">
         <div className="container mx-auto px-4 flex flex-wrap justify-between items-center">
@@ -59,13 +56,17 @@ const Navbar = () => {
               +971 568180793
             </a>
           </div>
-          <a href="mailto:info@optimastaruae.com" className="flex items-center text-sm hover:text-[#00aee7] transition-colors">
+          <a
+            href="mailto:info@optimastaruae.com"
+            className="flex items-center text-sm hover:text-[#00aee7] transition-colors"
+          >
             <Mail className="h-4 w-4 mr-1" />
             info@optimastaruae.com
           </a>
         </div>
       </div>
 
+      {/* Navbar */}
       <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "bg-white shadow-md py-0" : "bg-white/95 backdrop-blur-sm py-0.5"}`}>
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link href="/" className="flex items-center">
@@ -80,44 +81,11 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            <Link
-              href="/"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/about" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              About Us
-            </Link>
-            <Link
-              href="/services"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/services" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Services
-            </Link>
-            <button
-              onClick={() => setShowCertificateModal(true)}
-              className="text-base lg:text-lg font-medium text-[#132d4c] hover:text-[#00aee7] transition-colors"
-            >
-              Certificate
-            </button>
-            <Link
-              href="/contact"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/contact" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Contact
-            </Link>
+            <Link href="/" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Home</Link>
+            <Link href="/about" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/about" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>About Us</Link>
+            <Link href="/services" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/services" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Services</Link>
+            <button onClick={openModal} className="text-base lg:text-lg font-medium text-[#132d4c] hover:text-[#00aee7]">Certificate</button>
+            <Link href="/contact" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/contact" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Contact</Link>
             <div className="hidden lg:block">
               <BookingForm />
             </div>
@@ -138,25 +106,17 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white py-4 px-4 shadow-lg">
             <nav className="flex flex-col space-y-4">
-              <Link href="/" className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>
-                Home
-              </Link>
-              <Link href="/about" className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>
-                About Us
-              </Link>
-              <Link href="/services" className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>
-                Services
-              </Link>
-              <button onClick={() => setShowCertificateModal(true)} className="text-lg font-medium py-2 text-[#132d4c] hover:text-[#00aee7]">
-                Certificate
-              </button>
-              <Link href="/contact" className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>
-                Contact
-              </Link>
+              <Link href="/" className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Home</Link>
+              <Link href="/about" className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>About Us</Link>
+              <Link href="/services" className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Services</Link>
+              <button onClick={openModal} className="text-left text-lg font-medium py-2 text-[#132d4c] hover:text-[#00aee7]">Certificate</button>
+              <Link href="/contact" className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Contact</Link>
             </nav>
           </div>
         )}
       </header>
+
+      <CertificateModal isOpen={isCertificateModalOpen} onClose={closeModal} />
     </>
   )
 }
