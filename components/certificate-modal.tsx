@@ -20,13 +20,16 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="relative bg-white rounded-lg p-4 max-w-3xl w-full shadow-lg">
-        <button onClick={onClose} className="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-xl font-bold">
+    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center px-4">
+      <div className="relative bg-white rounded-lg max-w-3xl w-full shadow-lg overflow-hidden">
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-2xl font-bold z-10"
+        >
           ×
         </button>
         <Image
-          src="/whatsapp.jpg" // Replace with your certificate image
+          src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png" // Make sure this file exists in /public
           alt="Certificate"
           width={800}
           height={600}
