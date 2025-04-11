@@ -20,21 +20,27 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
+      onClick={onClose}
+    >
       <button
+        className="absolute top-4 right-4 text-white text-4xl z-50"
         onClick={onClose}
-        className="absolute top-4 right-4 text-white text-4xl font-bold z-50 hover:text-red-400"
-        aria-label="Close modal"
+        aria-label="Close"
       >
-        ×
+        &times;
       </button>
-      <div className="max-w-6xl w-full px-4">
+      <div
+        className="max-w-full max-h-full p-4"
+        onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking image
+      >
         <Image
           src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png"
           alt="Certificate"
           width={1600}
           height={1200}
-          className="w-full h-auto max-h-[90vh] object-contain rounded-lg shadow-lg"
+          className="w-auto max-w-full h-auto max-h-[90vh] rounded-lg shadow-lg"
         />
       </div>
     </div>
