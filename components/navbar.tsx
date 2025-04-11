@@ -71,7 +71,7 @@ const Navbar = () => {
 
       {/* Navbar */}
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled ? "bg-white shadow-md py-0" : "bg-white/95 backdrop-blur-sm py-0.5"
         }`}
       >
