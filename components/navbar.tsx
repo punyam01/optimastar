@@ -18,20 +18,13 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
+      setIsScrolled(window.scrollY > 10)
     }
 
     window.addEventListener("scroll", handleScroll)
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false)
   }, [pathname])
@@ -90,64 +83,32 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            <Link
-              href="/"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/about"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              About Us
-            </Link>
-            <Link
-              href="/services"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/services"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Services
-            </Link>
-            <Link
-              href="/certificate"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/certificate"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Certificate
-            </Link>
-            <Link
-              href="/contact"
-              className={`text-base lg:text-lg font-medium transition-colors ${
-                pathname === "/contact"
-                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                  : "text-[#132d4c] hover:text-[#00aee7]"
-              }`}
-            >
-              Contact
-            </Link>
-            <div className="hidden lg:block">
+            {[
+              { href: "/", label: "Home" },
+              { href: "/about", label: "About Us" },
+              { href: "/services", label: "Services" },
+              { href: "/certificate", label: "Certificate" },
+              { href: "/contact", label: "Contact" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-base lg:text-lg font-medium transition-colors ${
+                  pathname === item.href
+                    ? "text-[#00aee7] border-b-2 border-[#00aee7]"
+                    : "text-[#132d4c] hover:text-[#00aee7]"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="md:block hidden">
               <BookingForm />
             </div>
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
-            <div className="mr-2">
-              <BookingForm />
-            </div>
             <button className="text-[#132d4c] p-2" onClick={toggleMenu} aria-label="Toggle menu">
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -158,36 +119,26 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white py-4 px-4 shadow-lg">
             <nav className="flex flex-col space-y-4">
-              <Link
-                href="/"
-                className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                About Us
-              </Link>
-              <Link
-                href="/services"
-                className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Services
-              </Link>
-              <Link
-                href="/certificate"
-                className={`text-lg font-medium py-2 ${pathname === "/certificate" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Certificate
-              </Link>
-              <Link
-                href="/contact"
-                className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Contact
-              </Link>
+              {[
+                { href: "/", label: "Home" },
+                { href: "/about", label: "About Us" },
+                { href: "/services", label: "Services" },
+                { href: "/certificate", label: "Certificate" },
+                { href: "/contact", label: "Contact" },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-lg font-medium py-2 ${
+                    pathname === item.href ? "text-[#00aee7]" : "text-[#132d4c]"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="pt-4">
+                <BookingForm />
+              </div>
             </nav>
           </div>
         )}
