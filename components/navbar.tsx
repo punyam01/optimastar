@@ -1,40 +1,40 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Menu, X, Phone, Mail } from "lucide-react"
-import { usePathname } from "next/navigation"
-import BookingForm from "./booking-form"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu, X, Phone, Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
+import BookingForm from "./booking-form";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Close mobile menu when route changes
   useEffect(() => {
-    setIsMenuOpen(false)
-  }, [pathname])
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -42,7 +42,10 @@ const Navbar = () => {
       <div className="bg-[#132d4c] text-white py-2">
         <div className="container mx-auto px-4 flex flex-wrap justify-between items-center">
           <div className="flex items-center space-x-4 mb-2 sm:mb-0">
-            <a href="tel:+971568180793" className="flex items-center text-sm hover:text-[#00aee7] transition-colors">
+            <a
+              href="tel:+971568180793"
+              className="flex items-center text-sm hover:text-[#00aee7] transition-colors"
+            >
               <Phone className="h-4 w-4 mr-1" />
               +971 568180793
             </a>
@@ -118,6 +121,7 @@ const Navbar = () => {
             >
               Services
             </Link>
+            {/* Update Certificate Link */}
             <Link
               href="/certificate"
               className={`text-base lg:text-lg font-medium transition-colors ${
@@ -138,16 +142,10 @@ const Navbar = () => {
             >
               Contact
             </Link>
-            <div className="hidden lg:block">
-              <BookingForm />
-            </div>
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
-            <div className="mr-2">
-              <BookingForm />
-            </div>
             <button className="text-[#132d4c] p-2" onClick={toggleMenu} aria-label="Toggle menu">
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -158,42 +156,21 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white py-4 px-4 shadow-lg">
             <nav className="flex flex-col space-y-4">
-              <Link
-                href="/"
-                className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                About Us
-              </Link>
-              <Link
-                href="/services"
-                className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Services
-              </Link>
+              {/* Update Certificate Link */}
               <Link
                 href="/certificate"
-                className={`text-lg font-medium py-2 ${pathname === "/certificate" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
+                className={`text-lg font-medium py-2 ${
+                  pathname === "/certificate" ? "text-[#00aee7]" : "text-[#132d4c]"
+                }`}
               >
                 Certificate
-              </Link>
-              <Link
-                href="/contact"
-                className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
-              >
-                Contact
               </Link>
             </nav>
           </div>
         )}
       </header>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
