@@ -20,7 +20,7 @@ const CertificateModal = ({ isOpen, onClose }: CertificateModalProps) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-40 bg-black bg-opacity-80 flex items-start justify-center overflow-auto pt-[120px] px-4">
+    <div className="fixed inset-0 z-40 bg-black bg-opacity-80 flex items-start justify-center overflow-auto pt-[100px] px-4">
       <div className="w-full max-w-5xl flex flex-col items-center">
         <Image
           src="/APPROVED APPLICATOR CERTIFICATE-GEOBIT.png"
