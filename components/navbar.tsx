@@ -118,12 +118,16 @@ const Navbar = () => {
             >
               Services
             </Link>
-            <button
-              onClick={() => document.getElementById("certificate-modal-trigger")?.click()}
-              className={`text-base lg:text-lg font-medium transition-colors text-[#132d4c] hover:text-[#00aee7]`}
+            <Link
+              href="/certificate"
+              className={`text-base lg:text-lg font-medium transition-colors ${
+                pathname === "/certificate"
+                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
+                  : "text-[#132d4c] hover:text-[#00aee7]"
+              }`}
             >
               Certificate
-            </button>
+            </Link>
             <Link
               href="/contact"
               className={`text-base lg:text-lg font-medium transition-colors ${
@@ -172,15 +176,12 @@ const Navbar = () => {
               >
                 Services
               </Link>
-              <button
-                onClick={() => {
-                  setIsMenuOpen(false)
-                  document.getElementById("certificate-modal-trigger")?.click()
-                }}
-                className={`text-lg font-medium py-2 text-left text-[#132d4c]`}
+              <Link
+                href="/certificate"
+                className={`text-lg font-medium py-2 ${pathname === "/certificate" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
               >
                 Certificate
-              </button>
+              </Link>
               <Link
                 href="/contact"
                 className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
