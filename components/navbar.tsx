@@ -11,17 +11,16 @@ import CertificateModal from "./certificate-modal"
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isCertificateModalOpen, setCertificateModalOpen] = useState(false)
+  const [showCertificate, setShowCertificate] = useState(false)
   const pathname = usePathname()
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-  const openModal = () => setCertificateModalOpen(true)
-  const closeModal = () => setCertificateModalOpen(false)
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev)
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
+
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -30,8 +29,15 @@ const Navbar = () => {
     setIsMenuOpen(false)
   }, [pathname])
 
+  const handleCertificateClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setShowCertificate(true)
+  }
+
   return (
     <>
+      <CertificateModal isOpen={showCertificate} onClose={() => setShowCertificate(false)} />
+
       {/* Contact Banner */}
       <div className="bg-[#132d4c] text-white py-2">
         <div className="container mx-auto px-4 flex flex-wrap justify-between items-center">
@@ -67,7 +73,11 @@ const Navbar = () => {
       </div>
 
       {/* Navbar */}
-      <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "bg-white shadow-md py-0" : "bg-white/95 backdrop-blur-sm py-0.5"}`}>
+      <header
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+          isScrolled ? "bg-white shadow-md py-0" : "bg-white/95 backdrop-blur-sm py-0.5"
+        }`}
+      >
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link href="/" className="flex items-center">
             <Image
@@ -81,11 +91,16 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            <Link href="/" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Home</Link>
-            <Link href="/about" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/about" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>About Us</Link>
-            <Link href="/services" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/services" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Services</Link>
-            <button onClick={openModal} className="text-base lg:text-lg font-medium text-[#132d4c] hover:text-[#00aee7]">Certificate</button>
-            <Link href="/contact" className={`text-base lg:text-lg font-medium transition-colors ${pathname === "/contact" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`}>Contact</Link>
+            <NavLink href="/" label="Home" active={pathname === "/"} />
+            <NavLink href="/about" label="About Us" active={pathname === "/about"} />
+            <NavLink href="/services" label="Services" active={pathname === "/services"} />
+            <button
+              onClick={handleCertificateClick}
+              className="text-base lg:text-lg font-medium text-[#132d4c] hover:text-[#00aee7] transition-colors"
+            >
+              Certificate
+            </button>
+            <NavLink href="/contact" label="Contact" active={pathname === "/contact"} />
             <div className="hidden lg:block">
               <BookingForm />
             </div>
@@ -106,18 +121,46 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white py-4 px-4 shadow-lg">
             <nav className="flex flex-col space-y-4">
-              <Link href="/" className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Home</Link>
-              <Link href="/about" className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>About Us</Link>
-              <Link href="/services" className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Services</Link>
-              <button onClick={openModal} className="text-left text-lg font-medium py-2 text-[#132d4c] hover:text-[#00aee7]">Certificate</button>
-              <Link href="/contact" className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}>Contact</Link>
+              <NavLink href="/" label="Home" active={pathname === "/"} mobile />
+              <NavLink href="/about" label="About Us" active={pathname === "/about"} mobile />
+              <NavLink href="/services" label="Services" active={pathname === "/services"} mobile />
+              <button
+                onClick={handleCertificateClick}
+                className="text-lg font-medium py-2 text-[#132d4c] hover:text-[#00aee7] text-left"
+              >
+                Certificate
+              </button>
+              <NavLink href="/contact" label="Contact" active={pathname === "/contact"} mobile />
+              <div>
+                <BookingForm />
+              </div>
             </nav>
           </div>
         )}
       </header>
-
-      <CertificateModal isOpen={isCertificateModalOpen} onClose={closeModal} />
     </>
+  )
+}
+
+const NavLink = ({
+  href,
+  label,
+  active,
+  mobile = false,
+}: {
+  href: string
+  label: string
+  active: boolean
+  mobile?: boolean
+}) => {
+  const classes = mobile
+    ? `text-lg font-medium py-2 ${active ? "text-[#00aee7]" : "text-[#132d4c]"}`
+    : `text-base lg:text-lg font-medium transition-colors ${
+        active ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"}`
+  return (
+    <Link href={href} className={classes}>
+      {label}
+    </Link>
   )
 }
 
