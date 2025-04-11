@@ -6,15 +6,15 @@ import Image from "next/image"
 import { Menu, X, Phone, Mail } from "lucide-react"
 import { usePathname } from "next/navigation"
 import BookingForm from "./booking-form"
+import CertificateModal from "./certificate-modal" // 🔧 Import modal
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [showCertificateModal, setShowCertificateModal] = useState(false) // 🔧 Modal state
   const pathname = usePathname()
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +25,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false)
   }, [pathname])
@@ -83,32 +84,61 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            {[
-              { href: "/", label: "Home" },
-              { href: "/about", label: "About Us" },
-              { href: "/services", label: "Services" },
-              { href: "/certificate", label: "Certificate" },
-              { href: "/contact", label: "Contact" },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-base lg:text-lg font-medium transition-colors ${
-                  pathname === item.href
-                    ? "text-[#00aee7] border-b-2 border-[#00aee7]"
-                    : "text-[#132d4c] hover:text-[#00aee7]"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="md:block hidden">
+            <Link
+              href="/"
+              className={`text-base lg:text-lg font-medium transition-colors ${
+                pathname === "/" ? "text-[#00aee7] border-b-2 border-[#00aee7]" : "text-[#132d4c] hover:text-[#00aee7]"
+              }`}
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              className={`text-base lg:text-lg font-medium transition-colors ${
+                pathname === "/about"
+                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
+                  : "text-[#132d4c] hover:text-[#00aee7]"
+              }`}
+            >
+              About Us
+            </Link>
+            <Link
+              href="/services"
+              className={`text-base lg:text-lg font-medium transition-colors ${
+                pathname === "/services"
+                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
+                  : "text-[#132d4c] hover:text-[#00aee7]"
+              }`}
+            >
+              Services
+            </Link>
+            {/* 🔧 Updated Certificate Link (button) */}
+            <button
+              onClick={() => setShowCertificateModal(true)}
+              className="text-base lg:text-lg font-medium text-[#132d4c] hover:text-[#00aee7] transition-colors"
+            >
+              Certificate
+            </button>
+            <Link
+              href="/contact"
+              className={`text-base lg:text-lg font-medium transition-colors ${
+                pathname === "/contact"
+                  ? "text-[#00aee7] border-b-2 border-[#00aee7]"
+                  : "text-[#132d4c] hover:text-[#00aee7]"
+              }`}
+            >
+              Contact
+            </Link>
+            <div className="hidden lg:block">
               <BookingForm />
             </div>
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
+            <div className="mr-2">
+              <BookingForm />
+            </div>
             <button className="text-[#132d4c] p-2" onClick={toggleMenu} aria-label="Toggle menu">
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -119,30 +149,44 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white py-4 px-4 shadow-lg">
             <nav className="flex flex-col space-y-4">
-              {[
-                { href: "/", label: "Home" },
-                { href: "/about", label: "About Us" },
-                { href: "/services", label: "Services" },
-                { href: "/certificate", label: "Certificate" },
-                { href: "/contact", label: "Contact" },
-              ].map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-lg font-medium py-2 ${
-                    pathname === item.href ? "text-[#00aee7]" : "text-[#132d4c]"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <div className="pt-4">
-                <BookingForm />
-              </div>
+              <Link
+                href="/"
+                className={`text-lg font-medium py-2 ${pathname === "/" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
+              >
+                Home
+              </Link>
+              <Link
+                href="/about"
+                className={`text-lg font-medium py-2 ${pathname === "/about" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
+              >
+                About Us
+              </Link>
+              <Link
+                href="/services"
+                className={`text-lg font-medium py-2 ${pathname === "/services" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
+              >
+                Services
+              </Link>
+              {/* 🔧 Updated Certificate Link (button) */}
+              <button
+                onClick={() => setShowCertificateModal(true)}
+                className="text-lg font-medium py-2 text-[#132d4c] hover:text-[#00aee7]"
+              >
+                Certificate
+              </button>
+              <Link
+                href="/contact"
+                className={`text-lg font-medium py-2 ${pathname === "/contact" ? "text-[#00aee7]" : "text-[#132d4c]"}`}
+              >
+                Contact
+              </Link>
             </nav>
           </div>
         )}
       </header>
+
+      {/* 🔧 Certificate Modal */}
+      <CertificateModal isOpen={showCertificateModal} onClose={() => setShowCertificateModal(false)} />
     </>
   )
 }
