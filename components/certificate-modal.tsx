@@ -15,7 +15,7 @@ const certificates = [
     alt: "Geobit Certificate",
   },
   {
-    src: "/Approved Applicators Certificate -- (1)[1].png",
+    src: "/Approved25.png",
     alt: "Royal Industries Certificate",
   },
   {
