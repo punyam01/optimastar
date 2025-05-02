@@ -1,39 +1,60 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+// app/layout.tsx
+
+import { Inter, Poppins, Roboto } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
+import { Providers } from "./providers"
+
+// Fonts
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+})
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
+})
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
-  title: "OPTIMA STAR Technical Services LLC",
+export const metadata = {
+  title: "OPTIMA STAR TECHNICAL SERVICES LLC",
   description: "Built on Expertise, Driven by Excellence",
-    generator: 'v0.dev'
+  icons: {
+    icon: "/favicon.ico", // Make sure this is correct
+    apple: "/images/logo.png",
+  },
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+      <head>
+      <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="manifest" href="/site.webmanifest" />
+        {/* Optional: If you want to manually add Apple Touch Icon */}
+        <link rel="apple-touch-icon" href="/images/logo1.png" />
+      </head>
+      <body className={`${inter.className} ${poppins.variable} ${roboto.variable}`}>
+        <Providers>
           <Navbar />
           <main className="min-h-screen">{children}</main>
           <Footer />
           <WhatsAppButton />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'
